@@ -2304,8 +2304,14 @@ process FreebayesSingle {
     """
     freebayes \
         -f ${fasta} \
-        --min-alternate-fraction 0.1 \
-        --min-mapping-quality 1 \
+	--min-alternate-count 4 \
+        --min-alternate-fraction 0.4 \
+	--min-coverage 4 \
+	--ploidy 2 \
+	--use-best-n-alleles 8 \
+        --min-mapping-quality 40 \
+	--min-base-quality 30 \
+	--use-reference-allele \
         ${intervalsOptions} \
         ${bam} > ${intervalBed.baseName}_${idSample}.vcf
     """
